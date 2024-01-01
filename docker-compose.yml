@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - /opt/project/node_modules
+      - .:/opt/project
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - /opt/project/node_modules
+      - .:/opt/project
+    command: [ "pnpm", "run", "test" ]
