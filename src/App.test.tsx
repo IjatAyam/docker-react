@@ -1,15 +1,11 @@
 import { it } from 'vitest';
-import { render, unmountComponentAtNode } from 'react-dom';
+import { unmountComponentAtNode } from 'react-dom';
 import App from './App.tsx';
+import { createRoot } from 'react-dom/client';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  render(<App />, div);
-  unmountComponentAtNode(div);
-});
-
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  render(<App />, div);
+  const root = createRoot(div);
+  root.render(<App />);
   unmountComponentAtNode(div);
 });
